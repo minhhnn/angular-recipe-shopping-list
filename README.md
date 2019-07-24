@@ -1,6 +1,6 @@
 # Angular Recipe Shopping List Tutorial
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.2.
 
 ## Development server
 
@@ -28,3 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # angular-recipe-shopping-list-tutorial
 Demo Recipe shopping list tutorial
+Follow Udemy Course: https://www.udemy.com/the-complete-guide-to-angular-2/
