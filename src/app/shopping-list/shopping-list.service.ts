@@ -7,11 +7,19 @@ export class ShoppingListService {
     new Ingredient('Tomatoes', 10)
   ];
   ingredientChanged = new Subject<Ingredient[]>();
+  startedEditing = new Subject<number>();
   getIngredients() {
     return this.ingredients.slice();
   }
+  getIngredient(id: number): Ingredient {
+    return this.ingredients[id];
+  }
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
+    this.ingredientChanged.next(this.ingredients.slice());
+  }
+  updateIngredient(id: number, updatedIngredient: Ingredient) {
+    this.ingredients[id] = updatedIngredient;
     this.ingredientChanged.next(this.ingredients.slice());
   }
   addToShoppingList(ingredients: Ingredient[]) {
