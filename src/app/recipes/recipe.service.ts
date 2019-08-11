@@ -1,7 +1,10 @@
 import {Recipe} from './recipe.model';
 import {Ingredient} from '../shared/integredient.model';
+import {Subject} from 'rxjs';
 
 export class RecipeService {
+
+  recipesChanged = new Subject<Recipe[]>();
   private recipes: Recipe[] = [
     new Recipe(
       'Tasty Schnitzel',
@@ -20,11 +23,21 @@ export class RecipeService {
       ])
   ];
 
-  getServices() {
+  getRecipes() {
     return this.recipes.slice();
   }
 
   getRecipe(id: number) {
     return this.recipes[id];
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, updatedRecipe: Recipe) {
+    this.recipes[index] = updatedRecipe;
+    this.recipesChanged.next(this.recipes.slice());
   }
 }

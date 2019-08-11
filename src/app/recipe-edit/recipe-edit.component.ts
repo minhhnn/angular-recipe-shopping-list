@@ -24,7 +24,24 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.recipeForm);
+    // One way of implementing onSubmit by manually constructing the new recipe object
+    /*const recipe = new Recipe(this.recipeForm.value['name'],
+      this.recipeForm.value['description'],
+      this.recipeForm.value['imagePath'],
+      this.recipeForm.value['ingredients']);
+    if (this.editMode) {
+      this.recipeService.updateRecipe(this.id, recipe);
+    } else {
+      this.recipeService.addRecipe(recipe);
+    }*/
+
+    // Since we are using reactive form approach, we can pass the form object to the update/add recipe method directly
+    if (this.editMode) {
+      this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+    } else {
+      this.recipeService.addRecipe(this.recipeForm.value);
+    }
+    console.log('onSubmit called');
   }
 
   onAddIngredient() {
